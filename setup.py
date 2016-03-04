@@ -57,6 +57,4 @@ setup(
     install_requires=install_requires,
     tests_require=tests_require,
     include_package_data=True,
-    ext_modules=extensions,
-    cmdclass=dict(build_ext=ve_build_ext,
-                  test=PyTest))
+    cmdclass=dict(test=PyTest))

@@ -2,6 +2,9 @@ from docutils.parsers.rst import directives
 from sphinx.domains.python import PyModulelevel, PyClassmember
 
 
+__version__ = '0.0.1'
+
+
 def merge_dicts(*dcts):
     ret = {}
     for d in dcts:

@@ -37,7 +37,7 @@ setup(
     name='sphinxcontrib-asyncio',
     version=version,
     description=('sphinx extension to support coroutines in markup'),
-    long_description='\n\n'.join((read('README.rst'), read('CHANGES.txt'))),
+    long_description='\n\n'.join((read('README.rst'), read('CHANGES.rst'))),
     classifiers=[
         'Environment :: Plugins',
         'Framework :: Sphinx :: Extension',

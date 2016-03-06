@@ -3,6 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+.. default-domain:: py
+
 sphinxcontrib-asyncio
 =====================
 
@@ -20,7 +22,16 @@ Installation
 Use In Documents
 ----------------
 
-TBD
+.. cofunction:: coro(a, b)
+
+   Simple coroutine function.
+
+
+.. class:: A
+
+   .. comethod:: meth(self, param)
+
+      Coroutine method
 
 Discussion list
 ---------------

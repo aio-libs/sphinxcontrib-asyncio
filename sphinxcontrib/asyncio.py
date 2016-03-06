@@ -63,4 +63,6 @@ def setup(app):
     app.add_directive_to_domain('py', 'coroutinemethod', PyCoroutineMethod)
     app.add_directive_to_domain('py', 'corofunction', PyCoroutineFunction)
     app.add_directive_to_domain('py', 'coromethod', PyCoroutineMethod)
+    app.add_directive_to_domain('py', 'cofunction', PyCoroutineFunction)
+    app.add_directive_to_domain('py', 'comethod', PyCoroutineMethod)
     return {'version': '1.0', 'parallel_read_safe': True}

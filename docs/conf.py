@@ -16,6 +16,7 @@
 import codecs
 import os
 import re
+import sys
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -37,6 +38,7 @@ with codecs.open(_version_path, 'r', 'latin1') as fp:
     except IndexError:
         raise RuntimeError('Unable to determine version.')
 
+sys.path.append('..')
 
 # -- General configuration ------------------------------------------------
 
@@ -49,6 +51,7 @@ needs_sphinx = '1.0'
 extensions = [
     'sphinx.ext.intersphinx',
     'sphinx.ext.viewcode',
+    'sphinxcontrib.asyncio',
 ]
 
 intersphinx_mapping = {

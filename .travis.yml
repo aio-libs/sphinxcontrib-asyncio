@@ -21,6 +21,7 @@ before_cache:
 install:
   - pip install --upgrade pip wheel
   - pip install --upgrade setuptools
+  - pip install flake8
   - pip install -e .
 
 script:

@@ -15,9 +15,13 @@ Add :ref:`coroutine<coroutine>` markup support to sphinx-based docs.
 Installation
 ------------
 
-.. code::
+1. Install from PyPI::
 
-   pip install sphinxcontrib-asyncio
+   $ pip install sphinxcontrib-asyncio
+
+2. Enable ``sphinxcontrib-asyncio`` extension in your ``conf.py``::
+
+   extensions = ['sphinxcontrib.asyncio']
 
 Usage In Documents
 ------------------
@@ -127,7 +131,7 @@ Please post your questions and ideas here.
 Authors and License
 -------------------
 
-The ``sphinxcontrib-asyncio`` package is written mostly by Andrew Svetlov.
+The ``sphinxcontrib-asyncio`` package is written by Andrew Svetlov.
 
 It's *Apache 2* licensed and freely available.
 

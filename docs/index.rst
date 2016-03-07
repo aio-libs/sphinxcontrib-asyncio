@@ -29,8 +29,6 @@ Use ``cofunction`` instead of ``function``::
       Simple coroutine function.
 
 .. cofunction:: coro(a, b)
-   :async-with:
-
 
    Simple coroutine function.
 

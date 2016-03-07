@@ -89,13 +89,13 @@ is both *coroutine* and *asynchronous context manager*) explicit
 **coroutine** flag::
 
    .. cofunction:: get(url)
-      :async-for:
+      :async-with:
       :coroutine:
 
       A function can be used in ``async with`` and ``await`` context.
 
 .. cofunction:: get(url)
-   :async-for:
+   :async-with:
    :coroutine:
 
    A function can be used in ``async with`` and ``await`` context.
@@ -127,7 +127,7 @@ Please post your questions and ideas here.
 Authors and License
 -------------------
 
-The ``aiohttp`` package is written mostly by Andrew Svetlov.
+The ``sphinxcontrib-asyncio`` package is written mostly by Andrew Svetlov.
 
 It's *Apache 2* licensed and freely available.
 

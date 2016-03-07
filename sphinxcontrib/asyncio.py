@@ -32,10 +32,10 @@ class PyCoroutineMixin:
         if coroutine:
             ret += 'coroutine '
         if 'async-with' in self.options:
-            ret += 'async-with'
+            ret += 'async-with '
         if 'async-for' in self.options:
-            ret += 'async-for'
-        return ''
+            ret += 'async-for '
+        return ret
 
 
 class PyCoroutineFunction(PyCoroutineMixin, PyModulelevel):

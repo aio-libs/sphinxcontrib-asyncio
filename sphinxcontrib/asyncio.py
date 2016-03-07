@@ -55,7 +55,7 @@ class PyCoroutineMethod(PyCoroutineMixin, PyClassmember):
 
     def run(self):
         self.name = 'py:method'
-        return super(PyCoroutineFunction, self).run()
+        return super(PyCoroutineMethod, self).run()
 
 
 def setup(app):

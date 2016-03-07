@@ -13,7 +13,7 @@ def merge_dicts(*dcts):
     return ret
 
 
-class PyCoroutineMixin:
+class PyCoroutineMixin(object):
     option_spec = {'coroutine': directives.flag,
                    'async-with': directives.flag,
                    'async-for': directives.flag}
@@ -44,7 +44,7 @@ class PyCoroutineFunction(PyCoroutineMixin, PyModulelevel):
 
     def run(self):
         self.name = 'py:function'
-        return super().run()
+        return super(PyCoroutineFunction, self).run()
 
 
 class PyCoroutineMethod(PyCoroutineMixin, PyClassmember):
@@ -55,7 +55,7 @@ class PyCoroutineMethod(PyCoroutineMixin, PyClassmember):
 
     def run(self):
         self.name = 'py:method'
-        return super().run()
+        return super(PyCoroutineFunction, self).run()
 
 
 def setup(app):

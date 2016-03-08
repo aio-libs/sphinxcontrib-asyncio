@@ -2,7 +2,7 @@ from docutils.parsers.rst import directives
 from sphinx.domains.python import PyModulelevel, PyClassmember
 
 
-__version__ = '0.1.0'
+__version__ = '0.1.1'
 
 
 def merge_dicts(*dcts):

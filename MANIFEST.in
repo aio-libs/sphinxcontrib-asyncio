@@ -1,0 +1,8 @@
+include LICENSE.txt
+include CHANGES.rst
+include README.rst
+include Makefile
+graft sphinxcontrib
+graft docs
+global-exclude *.pyc
+prune docs/_build

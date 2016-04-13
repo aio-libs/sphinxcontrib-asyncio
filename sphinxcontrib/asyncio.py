@@ -1,6 +1,7 @@
 from docutils.parsers.rst import directives
 from sphinx.domains.python import PyModulelevel, PyClassmember
-
+from sphinx.ext.autodoc import FunctionDocumenter, MethodDocumenter
+from asyncio import iscoroutinefunction
 
 __version__ = '0.1.1'
 
@@ -58,6 +59,43 @@ class PyCoroutineMethod(PyCoroutineMixin, PyClassmember):
         return super(PyCoroutineMethod, self).run()
 
 
+class CoFunctionDocumenter(FunctionDocumenter):
+    """
+    Specialized Documenter subclass for functions and coroutines.
+    """
+    objtype = "cofunction"
+    directivetype = "cofunction"
+    priority = 2
+
+    @classmethod
+    def can_document_member(cls, member, membername, isattr, parent):
+        """Called to see if a member can be documented by this documenter."""
+        if not super().can_document_member(member, membername, isattr, parent):
+            return False
+        return iscoroutinefunction(member)
+
+
+class CoMethodDocumenter(MethodDocumenter):
+    """
+    Specialized Documenter subclass for methods and coroutines.
+    """
+    objtype = "comethod"
+    priority = 3  # Higher than CoFunctionDocumenter
+
+    @classmethod
+    def can_document_member(cls, member, membername, isattr, parent):
+        """Called to see if a member can be documented by this documenter."""
+        if not super().can_document_member(member, membername, isattr, parent):
+            return False
+        return iscoroutinefunction(member)
+
+    def import_object(self):
+        ret = super().import_object()
+        # Was overridden by method documenter, return to default
+        self.directivetype = "comethod"
+        return ret
+
+
 def setup(app):
     app.add_directive_to_domain('py', 'coroutinefunction', PyCoroutineFunction)
     app.add_directive_to_domain('py', 'coroutinemethod', PyCoroutineMethod)
@@ -65,4 +103,7 @@ def setup(app):
     app.add_directive_to_domain('py', 'coromethod', PyCoroutineMethod)
     app.add_directive_to_domain('py', 'cofunction', PyCoroutineFunction)
     app.add_directive_to_domain('py', 'comethod', PyCoroutineMethod)
+
+    app.add_autodocumenter(CoFunctionDocumenter)
+    app.add_autodocumenter(CoMethodDocumenter)
     return {'version': '1.0', 'parallel_read_safe': True}

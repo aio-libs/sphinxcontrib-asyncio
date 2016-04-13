@@ -12,3 +12,7 @@ class MyClass:
 
     async def my_async_func(self):
         """ This is my async function """
+
+
+async def coro(param):
+    """ Module level async function """

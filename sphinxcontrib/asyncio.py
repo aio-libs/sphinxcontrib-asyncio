@@ -1,6 +1,7 @@
 from docutils.parsers.rst import directives
 from sphinx.domains.python import PyModulelevel, PyClassmember
-from sphinx.ext.autodoc import FunctionDocumenter, MethodDocumenter
+from sphinx.ext.autodoc import FunctionDocumenter, MethodDocumenter, \
+    bool_option
 try:
     from asyncio import iscoroutinefunction
 except ImportError:
@@ -71,6 +72,12 @@ class CoFunctionDocumenter(FunctionDocumenter):
     objtype = "cofunction"
     directivetype = "cofunction"
     priority = 2
+    option_spec = merge_dicts(
+        MethodDocumenter.option_spec,
+        {'async-with': bool_option,
+         'async-for': bool_option,
+         'coroutine': bool_option
+         })
 
     @classmethod
     def can_document_member(cls, member, membername, isattr, parent):
@@ -79,6 +86,16 @@ class CoFunctionDocumenter(FunctionDocumenter):
             return False
         return iscoroutinefunction(member)
 
+    def add_directive_header(self, sig):
+        super().add_directive_header(sig)
+        sourcename = self.get_sourcename()
+        if self.options.async_with:
+            self.add_line('   :async-with:', sourcename)
+        if self.options.async_for:
+            self.add_line('   :async-for:', sourcename)
+        if self.options.coroutine:
+            self.add_line('   :coroutine:', sourcename)
+
 
 class CoMethodDocumenter(MethodDocumenter):
     """
@@ -86,6 +103,14 @@ class CoMethodDocumenter(MethodDocumenter):
     """
     objtype = "comethod"
     priority = 3  # Higher than CoFunctionDocumenter
+    option_spec = merge_dicts(
+        MethodDocumenter.option_spec,
+        {'staticmethod': bool_option,
+         'classmethod': bool_option,
+         'async-with': bool_option,
+         'async-for': bool_option,
+         'coroutine': bool_option
+         })
 
     @classmethod
     def can_document_member(cls, member, membername, isattr, parent):
@@ -99,6 +124,20 @@ class CoMethodDocumenter(MethodDocumenter):
         # Was overridden by method documenter, return to default
         self.directivetype = "comethod"
         return ret
+
+    def add_directive_header(self, sig):
+        super().add_directive_header(sig)
+        sourcename = self.get_sourcename()
+        if self.options.staticmethod:
+            self.add_line('   :staticmethod:', sourcename)
+        if self.options.staticmethod:
+            self.add_line('   :classmethod:', sourcename)
+        if self.options.async_with:
+            self.add_line('   :async-with:', sourcename)
+        if self.options.async_for:
+            self.add_line('   :async-for:', sourcename)
+        if self.options.coroutine:
+            self.add_line('   :coroutine:', sourcename)
 
 
 def setup(app):

@@ -1,7 +1,12 @@
 from docutils.parsers.rst import directives
 from sphinx.domains.python import PyModulelevel, PyClassmember
 from sphinx.ext.autodoc import FunctionDocumenter, MethodDocumenter
-from asyncio import iscoroutinefunction
+try:
+    from asyncio import iscoroutinefunction
+except ImportError:
+    def iscoroutinefunction(func):
+        """Return True if func is a decorated coroutine function."""
+        return getattr(func, '_is_coroutine', False)
 
 __version__ = '0.1.1'
 

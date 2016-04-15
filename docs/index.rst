@@ -151,7 +151,7 @@ Will yield next documentation:
 .. autoclass:: MyClass
    :members:
 
-You can set directive options by adding it to `autocofunction` and 
+You can set directive options by adding it to `autocofunction` and
 `autocomethod` directives::
 
    .. autocofunction:: coro

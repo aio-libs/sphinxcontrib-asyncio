@@ -159,7 +159,7 @@ You can set directive options by adding it to `autocofunction` and
       :coroutine:
 
 .. autocofunction:: coro
-   :async-with:
+   :async-for:
    :coroutine:
 
 You can also force `coroutine` prefix on not-coroutine method by overriding it

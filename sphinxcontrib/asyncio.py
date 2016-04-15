@@ -9,7 +9,7 @@ except ImportError:
         """Return True if func is a decorated coroutine function."""
         return getattr(func, '_is_coroutine', False)
 
-__version__ = '0.1.1'
+__version__ = '0.2.0'
 
 
 def merge_dicts(*dcts):

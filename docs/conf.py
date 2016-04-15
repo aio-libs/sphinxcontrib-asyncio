@@ -21,6 +21,7 @@ import sys
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
+sys.path.insert(0, os.path.abspath(os.path.join(__file__, '../')))
 
 _docs_path = os.path.dirname(__file__)
 _version_path = os.path.abspath(os.path.join(_docs_path,
@@ -51,6 +52,7 @@ needs_sphinx = '1.0'
 extensions = [
     'sphinx.ext.intersphinx',
     'sphinx.ext.viewcode',
+    'sphinx.ext.autodoc',
     'sphinxcontrib.asyncio',
 ]
 
@@ -229,3 +231,6 @@ html_static_path = ['_static']
 
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'sphinxcontrib-asynciodoc'
+
+autodoc_member_order = 'bysource'
+add_module_names = False

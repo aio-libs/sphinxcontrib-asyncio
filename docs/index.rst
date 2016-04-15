@@ -121,6 +121,63 @@ is both *coroutine* and *asynchronous context manager*) explicit
 
       This is classmethod
 
+
+Usage in `sphinx.ext.autodoc` extension
+---------------------------------------
+
+.. currentmodule:: autodoc_example
+
+``sphinxcontrib-asyncio`` add special documenters for autodocs, which will use
+*cofunction* and *comethod* directives if the function is an ``async def`` or
+is marked with ``coroutine`` decorator.
+
+For example this source:
+
+.. literalinclude:: autodoc_example.py
+   :language: python
+
+
+Using this simple configuration in your `.rst` file::
+
+   .. autocofunction:: coro
+
+   .. autoclass:: MyClass
+      :members:
+
+Will yield next documentation:
+
+.. autocofunction:: coro
+
+.. autoclass:: MyClass
+   :members:
+
+You can set directive options by adding it to `autocofunction` and 
+`autocomethod` directives::
+
+   .. autocofunction:: coro
+      :async-for:
+      :coroutine:
+
+.. autocofunction:: coro
+   :async-with:
+   :coroutine:
+
+You can also force `coroutine` prefix on not-coroutine method by overriding it
+as `autocomethod` directive::
+
+   .. autoclass:: MyClass
+      :members:
+      :exclude-members: my_func
+
+      .. autocomethod:: my_func()
+
+.. autoclass:: MyClass
+   :members:
+   :exclude-members: my_func
+
+   .. autocomethod:: my_func()
+
+
 Discussion list
 ---------------
 

@@ -10,9 +10,7 @@ class MyClass:
     def my_coro(self):
         """ This is my coroutine """
 
-    async def my_async_func(self):
-        """ This is my async function """
 
-
-async def coro(param):
+@asyncio.coroutine
+def coro(param):
     """ Module level async function """

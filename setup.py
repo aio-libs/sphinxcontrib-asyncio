@@ -40,6 +40,7 @@ setup(
     long_description='\n\n'.join((read('README.rst'), read('CHANGES.rst'))),
     classifiers=[
         'Environment :: Plugins',
+        'Framework :: AsyncIO',
         'Framework :: Sphinx :: Extension',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: Apache Software License',

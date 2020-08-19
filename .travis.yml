@@ -3,10 +3,10 @@ sudo: no
 language: python
 
 python:
-  - 2.7
-  - 3.3
-  - 3.4
   - 3.5
+  - 3.6
+  - 3.7
+  - 3.8
 
 os:
   - linux
@@ -40,4 +40,4 @@ deploy:
   on:
     tags: true
     all_branches: true
-    python: 3.5
+    python: 3.8

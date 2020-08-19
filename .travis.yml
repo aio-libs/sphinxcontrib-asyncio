@@ -33,10 +33,10 @@ script:
 
 deploy:
   provider: pypi
-  user: andrew.svetlov
-  password:
-    secure: cFeoBlB33ozmJiTUCl9mGhFhk+kECLng31D6/hvczye8AtK5J+0XN6MePCJYRFZJ0d5PYbW6UmEDiRswpXDRZoM/eqrWE1QylGFBk++DAN4Kjcox2vzUPvf0zCnC9Ev20SePoy2bVYvgPaPXJjrk01CNEA2vaCmCthy2ByVBBOEEKFbCMvlACZAjcpMDWjNahjr+hNVyeFEQ6VcPZ+63qE4w6xz0jiT5Qe3KP35DpXBiTV/N+7HCiHEeQsrhMIX5MDMShEA832BiOvVW3EuVMQDwc+kARr7r4/dNdDb/zPJaDLVWevYl198OSIrJl/YFGn7OYpvN9sDdbBDhnKN/ew3NJNT0llAE5T3tVaHgkyYMSFu/voQ6RmprbjaqL/GO/4UdpDity4jHXh6nUfdekfPADtcDstCdggIj8Og1bHV2tDYswqZ8h3V/v0HyANuTtFjsv86IKhJYXyUZhqhFzi88SkAaRzn+uX2qrqi09/OPkBYezHFZYOuGJANP0L7GNEhsS6K15WpMCLjqnSQJCVj6dzqfGXKfC6Dqkx34APmhnpY7R5udNO0YrndGwjEKorJuix/65mbt9RCSPDzDHSjQyZbOxP6i1r9ymr3jDBjq05QwnT3dMkHXDGEwaVcn1i8W6QBbTjmRgoTKd5BiBt8cZVIrUgzSB7bEyv2B5dw=
-  distributions: "sdist"
+  user: __token__
+  password: $PYPI
+  distributions: "sdist bdist_wheel"
+  skip_existing: true
   on:
     tags: true
     all_branches: true

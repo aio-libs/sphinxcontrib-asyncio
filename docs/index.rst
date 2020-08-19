@@ -15,11 +15,15 @@ Add :ref:`coroutine<coroutine>` markup support to sphinx-based docs.
 Installation
 ------------
 
-1. Install from PyPI::
+1. Install from PyPI:
+
+.. code-block:: shell
 
    $ pip install sphinxcontrib-asyncio
 
-2. Enable ``sphinxcontrib-asyncio`` extension in your ``conf.py``::
+2. Enable ``sphinxcontrib-asyncio`` extension in your ``conf.py``:
+
+.. code-block:: python
 
    extensions = ['sphinxcontrib.asyncio']
 
@@ -33,6 +37,7 @@ Use ``cofunction`` instead of ``function``::
       Simple coroutine function.
 
 .. cofunction:: coro(a, b)
+   :noindex:
 
    Simple coroutine function.
 
@@ -45,6 +50,7 @@ and ``comethod`` instead of ``method``::
          Coroutine method.
 
 .. class:: A
+   :noindex:
 
    .. comethod:: meth(self, param)
 
@@ -78,6 +84,7 @@ For more complex markup use *directive options*, e.g.
 
 .. cofunction:: iter_vals(arg)
    :async-for:
+   :noindex:
 
    A function the returns asynchronous generator.
 
@@ -101,6 +108,7 @@ is both *coroutine* and *asynchronous context manager*) explicit
 .. cofunction:: get(url)
    :async-with:
    :coroutine:
+   :noindex:
 
    A function can be used in ``async with`` and ``await`` context.
 
@@ -115,6 +123,7 @@ is both *coroutine* and *asynchronous context manager*) explicit
          This is classmethod
 
 .. class:: A
+   :noindex:
 
    .. comethod:: f(cls, arg)
       :classmethod:
@@ -147,9 +156,11 @@ Using this simple configuration in your `.rst` file::
 Will yield next documentation:
 
 .. autocofunction:: coro
+   :noindex:
 
 .. autoclass:: MyClass
    :members:
+   :noindex:
 
 You can set directive options by adding it to `autocofunction` and
 `autocomethod` directives::
@@ -161,6 +172,7 @@ You can set directive options by adding it to `autocofunction` and
 .. autocofunction:: coro
    :async-for:
    :coroutine:
+   :noindex:
 
 You can also force `coroutine` prefix on not-coroutine method by overriding it
 as `autocomethod` directive::
@@ -174,6 +186,7 @@ as `autocomethod` directive::
 .. autoclass:: MyClass
    :members:
    :exclude-members: my_func
+   :noindex:
 
    .. autocomethod:: my_func()
 

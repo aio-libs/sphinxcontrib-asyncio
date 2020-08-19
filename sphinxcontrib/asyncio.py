@@ -1,5 +1,5 @@
 from docutils.parsers.rst import directives
-from sphinx.domains.python import PyModulelevel, PyClassmember
+from sphinx.domains.python import PyFunction, PyMethod
 from sphinx.ext.autodoc import FunctionDocumenter, MethodDocumenter, \
     bool_option
 try:
@@ -9,7 +9,7 @@ except ImportError:
         """Return True if func is a decorated coroutine function."""
         return getattr(func, '_is_coroutine', False)
 
-__version__ = '0.2.0'
+__version__ = '0.3.0'
 
 
 def merge_dicts(*dcts):
@@ -45,18 +45,18 @@ class PyCoroutineMixin(object):
         return ret
 
 
-class PyCoroutineFunction(PyCoroutineMixin, PyModulelevel):
+class PyCoroutineFunction(PyCoroutineMixin, PyFunction):
     option_spec = merge_dicts(PyCoroutineMixin.option_spec,
-                              PyModulelevel.option_spec)
+                              PyFunction.option_spec)
 
     def run(self):
         self.name = 'py:function'
         return super(PyCoroutineFunction, self).run()
 
 
-class PyCoroutineMethod(PyCoroutineMixin, PyClassmember):
+class PyCoroutineMethod(PyCoroutineMixin, PyMethod):
     option_spec = merge_dicts(PyCoroutineMixin.option_spec,
-                              PyClassmember.option_spec,
+                              PyMethod.option_spec,
                               {'staticmethod': directives.flag,
                                'classmethod': directives.flag})
 

@@ -190,14 +190,6 @@ as `autocomethod` directive::
 
    .. autocomethod:: my_func()
 
-
-Discussion list
----------------
-
-*aio-libs* google group: https://groups.google.com/forum/#!forum/aio-libs
-
-Please post your questions and ideas here.
-
 Authors and License
 -------------------
 

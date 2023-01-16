@@ -26,22 +26,22 @@ class PyCoroutineMixin(object):
                    'async-for': directives.flag}
 
     def get_signature_prefix(self, sig):
-        ret = ''
+        ret = []
         if 'staticmethod' in self.options:
-            ret += 'staticmethod '
+            ret.append("staticmethod")
         if 'classmethod' in self.options:
-            ret += 'classmethod '
+            ret.append("classmethod")
         if 'coroutine' in self.options:
             coroutine = True
         else:
             coroutine = ('async-with' not in self.options and
                          'async-for' not in self.options)
         if coroutine:
-            ret += 'coroutine '
+            ret.append("coroutine")
         if 'async-with' in self.options:
-            ret += 'async-with '
+            ret.append("async-with")
         if 'async-for' in self.options:
-            ret += 'async-for '
+            ret.append("async-for")
         return ret
 
 

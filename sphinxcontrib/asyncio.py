@@ -1,4 +1,6 @@
+from docutils import nodes
 from docutils.parsers.rst import directives
+from sphinx import addnodes
 from sphinx.domains.python import PyFunction, PyMethod
 from sphinx.ext.autodoc import FunctionDocumenter, MethodDocumenter, \
     bool_option
@@ -26,22 +28,22 @@ class PyCoroutineMixin(object):
                    'async-for': directives.flag}
 
     def get_signature_prefix(self, sig):
-        ret = ''
+        ret = []
         if 'staticmethod' in self.options:
-            ret += 'staticmethod '
+            ret += [nodes.Text('staticmethod'), addnodes.desc_sig_space()]
         if 'classmethod' in self.options:
-            ret += 'classmethod '
+            ret += [nodes.Text('classmethod'), addnodes.desc_sig_space()]
         if 'coroutine' in self.options:
             coroutine = True
         else:
             coroutine = ('async-with' not in self.options and
                          'async-for' not in self.options)
         if coroutine:
-            ret += 'coroutine '
+            ret += [nodes.Text('coroutine'), addnodes.desc_sig_space()]
         if 'async-with' in self.options:
-            ret += 'async-with '
+            ret += [nodes.Text('async-with'), addnodes.desc_sig_space()]
         if 'async-for' in self.options:
-            ret += 'async-for '
+            ret += [nodes.Text('async-for'), addnodes.desc_sig_space()]
         return ret
 
 
